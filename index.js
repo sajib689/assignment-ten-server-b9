@@ -25,7 +25,17 @@ async function run() {
   try {
    await client.connect();
    const spotCollection = await client.db('touristSpot').collection('spots')
-    // get all spots
+     // email wise spot load
+     app.get('/spots', async (req, res) => {
+        const email = req.query.email;
+        if(!email) {
+          res.send([])
+        } 
+        const query = {email: email}
+        const result = await spotCollection.find(query).toArray();
+        res.send(result)
+    })
+   // get all spots
    app.get('/spots', async (req, res) => {
         const result = await spotCollection.find().toArray()
         res.send(result)
@@ -43,7 +53,7 @@ async function run() {
         const result = await spotCollection.insertOne(query)
         res.send(result)
     })
-    
+   
    await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
