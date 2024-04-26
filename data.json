@@ -1,0 +1,68 @@
+[
+    {
+        "image": "https://www.sundarbantours.com/wp-content/uploads/2013/03/Hiron-Point-Sundarban.jpg",
+        "tourist_spot_name": "Sundarbans",
+        "country_name": "Bangladesh",
+        "location": "Khulna Division",
+        "short_description": "The largest mangrove forest in the world and home to the Royal Bengal Tiger.",
+        "average_cost": "$200 per person",
+        "seasonality": "All year round, but best visited during the winter season (November to March)",
+        "travel_time": "3 days",
+        "total_visitors_per_year": 50000
+    },
+    {
+        "image": "https://www.deraresort.com/images/featured/inani-beach.jpg",
+        "tourist_spot_name": "Cox's Bazar",
+        "country_name": "Bangladesh",
+        "location": "Chittagong Division",
+        "short_description": "Famous for having one of the longest natural sea beaches in the world.",
+        "average_cost": "$150 per person",
+        "seasonality": "All year round, but best visited during the winter season (November to February)",
+        "travel_time": "4 days",
+        "total_visitors_per_year": 100000
+    },
+    {
+        "image": "https://www.tbsnews.net/sites/default/files/styles/infograph/public/images/2020/12/09/rangamati_jorna_pi_2.jpg",
+        "tourist_spot_name": "Rangamati",
+        "country_name": "Bangladesh",
+        "location": "Chittagong Hill Tracts",
+        "short_description": "Known for its scenic beauty, lakes, and indigenous communities.",
+        "average_cost": "$100 per person",
+        "seasonality": "All year round, but best visited during the monsoon season (June to September)",
+        "travel_time": "2 days",
+        "total_visitors_per_year": 30000
+    },
+    {
+        "image": "https://www.travelandexplorebd.com/storage/app/public/posts/April2020/Nilachal,%20Bandarban,%20Chittagong.jpg",
+        "tourist_spot_name": "Bandarban",
+        "country_name": "Bangladesh",
+        "location": "Chittagong Hill Tracts",
+        "short_description": "Famous for its rugged landscapes, tribal culture, and trekking trails.",
+        "average_cost": "$120 per person",
+        "seasonality": "All year round, but best visited during the winter season (November to February)",
+        "travel_time": "3 days",
+        "total_visitors_per_year": 25000
+    },
+    {
+        "image": "https://www.shutterstock.com/image-photo/st-martins-island-locally-known-600nw-1741698692.jpg",
+        "tourist_spot_name": "Saint Martin’s Island",
+        "country_name": "Bangladesh",
+        "location": "Bay of Bengal",
+        "short_description": "The only coral island in Bangladesh, offering beautiful beaches and snorkeling opportunities.",
+        "average_cost": "$180 per person",
+        "seasonality": "All year round, but best visited during the winter season (November to March)",
+        "travel_time": "2 days",
+        "total_visitors_per_year": 40000
+    },
+    {
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgSzYCLiioo13dwJNydHYWbRbPDO2luAZkf89U8nSpPA&s",
+        "tourist_spot_name": "Sylhet",
+        "country_name": "Bangladesh",
+        "location": "Sylhet Division",
+        "short_description": "Famous for its tea gardens, natural beauty, and the Ratargul Swamp Forest.",
+        "average_cost": "$130 per person",
+        "seasonality": "All year round, but best visited during the monsoon season (June to September)",
+        "travel_time": "2 days",
+        "total_visitors_per_year": 35000
+    }
+]
