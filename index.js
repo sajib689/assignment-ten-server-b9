@@ -61,6 +61,28 @@ app.delete('/spots/:id', async (req, res) => {
     const result = await spotCollection.deleteOne(filter)
     res.send(result)
 })
+// update spot
+app.put('/spots/:id', async (req, res) => {
+    const id = req.params.id
+    const filter = {_id: new ObjectId(id)}
+    const options = { upsert: true}
+    const spot = req.body
+    const updateSpots = {
+        $set: {
+            tourist_spot_name:spot.tourist_spot_name,
+            country_name:spot.country_name,
+            location:spot.location,
+            short_description:spot.short_description,
+            average_cost:spot.average_cost,
+            image:spot.image,
+            seasonality:spot.seasonality,
+            travel_time:spot.travel_time,
+            total_visitors_per_year:spot.total_visitors_per_year,
+        }
+    }
+    const result = await spotCollection.updateOne(filter, updateSpots, options)
+    res.send(result)
+})
    await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
