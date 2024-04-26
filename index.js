@@ -25,35 +25,35 @@ async function run() {
   try {
    await client.connect();
    const spotCollection = await client.db('touristSpot').collection('spots')
-     // email wise spot load
-     app.get('/spots', async (req, res) => {
-        const email = req.query.email;
-        if(!email) {
-          res.send([])
-        } 
-        const query = {email: email}
-        const result = await spotCollection.find(query).toArray();
-        res.send(result)
-    })
-   // get all spots
+    
    app.get('/spots', async (req, res) => {
-        const result = await spotCollection.find().toArray()
-        res.send(result)
-    })
-    // get one spot details
-    app.get('/spots/:id', async (req, res) => {
-        const id = req.params.id
-        const filter = {_id: new ObjectId(id)}
-        const result = await spotCollection.findOne(filter)
-        res.send(result)
-    })
+    const email = req.query.email;
+    if (email) {
+        // Fetch spots based on email
+        const result = await spotCollection.find({ email: email }).toArray();
+        res.send(result);
+    } else {
+        // Fetch all spots
+        const result = await spotCollection.find().toArray();
+        res.send(result);
+    }
+});
+
     // post spot 
     app.post('/spots', async (req, res) => {
         const query = req.body 
         const result = await spotCollection.insertOne(query)
         res.send(result)
     })
-   
+  
+ 
+// get one spot details
+app.get('/spots/:id', async (req, res) => {
+    const id = req.params.id
+    const filter = {_id: new ObjectId(id)}
+    const result = await spotCollection.findOne(filter)
+    res.send(result)
+})
    await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
