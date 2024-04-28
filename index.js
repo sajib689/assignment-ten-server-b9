@@ -25,8 +25,9 @@ async function run() {
   try {
    await client.connect();
    const spotCollection = await client.db('touristSpot').collection('spots')
-    
-   app.get('/spots', async (req, res) => {
+    const countriesCollection = await client.db('touristSpot').collection('countries')
+    const contactCollection = await client.db('touristSpot').collection('contact')
+    app.get('/spots', async (req, res) => {
     const email = req.query.email;
     if (email) {
         // Fetch spots based on email
@@ -83,6 +84,36 @@ app.put('/spots/:id', async (req, res) => {
     const result = await spotCollection.updateOne(filter, updateSpots, options)
     res.send(result)
 })
+
+    app.get('/countries', async (req, res) => {
+        const country_name = req.query.country_name;
+        if (country_name) {
+            // Fetch spots based on email
+            const result = await countriesCollection.find({ country_name: country_name }).toArray();
+            res.send(result);
+        } else {
+            // Fetch all spots
+            const result = await countriesCollection.find().toArray();
+            res.send(result);
+        }
+    });
+    
+    // view details
+    app.get('/countries/tourist_spots/:id', async (req, res) => {
+        const id = parseInt(req.params.id);
+        const result = await countriesCollection.findOne({"tourist_spots.id": id })
+        const touristSpot = await result.tourist_spots.find(spot => spot.id === id);
+        res.send(touristSpot)
+    })
+
+    // contact us
+    app.post('/contact', async(req, res) => {
+        const query = req.body 
+        const result = await contactCollection.insertOne(query)
+        res.send(result)
+    })
+    
+    
    await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
