@@ -23,10 +23,11 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-   await client.connect();
+//    await client.connect();
    const spotCollection = await client.db('touristSpot').collection('spots')
     const countriesCollection = await client.db('touristSpot').collection('countries')
     const contactCollection = await client.db('touristSpot').collection('contact')
+    
     app.get('/spots', async (req, res) => {
     const email = req.query.email;
     if (email) {
@@ -86,7 +87,7 @@ app.put('/spots/:id', async (req, res) => {
 })
 
     app.get('/countries', async (req, res) => {
-        const country_name = req.query.country_name;
+        const country_name = req.params.country_name;
         if (country_name) {
             // Fetch spots based on email
             const result = await countriesCollection.find({ country_name: country_name }).toArray();
@@ -97,15 +98,8 @@ app.put('/spots/:id', async (req, res) => {
             res.send(result);
         }
     });
-    
-    // view details
-    app.get('/countries/tourist_spots/:id', async (req, res) => {
-        const id = parseInt(req.params.id);
-        const result = await countriesCollection.findOne({"tourist_spots.id": id })
-        const touristSpot = await result.tourist_spots.find(spot => spot.id === id);
-        res.send(touristSpot)
-    })
-
+ 
+   
     // contact us
     app.post('/contact', async(req, res) => {
         const query = req.body 
@@ -114,7 +108,7 @@ app.put('/spots/:id', async (req, res) => {
     })
     
     
-   await client.db("admin").command({ ping: 1 });
+//    await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
    // await client.close();
